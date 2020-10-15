@@ -32,12 +32,13 @@ Please review the [CS253 Style Guide](https://docs.google.com/document/d/1zKIpNf
    - char contactPhoneNum[50]
    - struct ContactNode* nextNodePtr
 - Related functions
-   - void CreateContactNode(ContactNode* thisNode, char nameInit[], char phoneNumInit[], ContactNode* nextLoc) 
+   - ContactNode* CreateContactNode(char nameInit[], char phoneNumInit[]) 
    - void InsertContactAfter(ContactNode* thisNode, ContactNode* newNode) 
       - Insert a new node after node
-   - ContactNode* GetNextContact() 
+   - ContactNode* GetNextContact(ContactNode* thisNode) 
       - Return location pointed by nextNodePtr
-   - void PrintContactNode()
+   - void PrintContactNode(ContactNode* thisNode)
+   - void DestroyContactNode(ContactNode* thisNode)
 
 <br />  
 
@@ -90,14 +91,22 @@ Name: Rachel Phillips
 Phone number: 310-555-6610
 ```
 
+<br />
+5. Run valgrind to check for memory leaks or errors
+<br /><br />
+
+```
+valgrind --tool=memcheck --leak-check=yes --show-reachable=yes ./myprog
+```
 
 ### Implementation Guide
 1. Expand the folder named LabWarmup and open ContactNode.c, ContactNode.h and main.c
 2. Enter the program code to create an application as described in the Problem Description.
-3. Test the program using to ensure it functions as expected.
-4. Commit the changes to your local repository with a message stating that LabWarmup is completed.
-5. Push the changes from your local repository to the github classroom repository.
-6. Update the Coding Journal with an entry describing your experience using the steps outlined below.
+3. Test the program to ensure it functions as expected.
+4. Run the program with valgrind to catch any memory leaks or errors
+5. Commit the changes to your local repository with a message stating that LabWarmup is completed.
+6. Push the changes from your local repository to the github classroom repository.
+7. Update the Coding Journal with an entry describing your experience using the steps outlined below.
 
 
 ## Lab Activity
@@ -122,6 +131,7 @@ Build the PlaylistNode class per the following specifications. Note: Some functi
    - PlaylistNode* nextNodePtr 
 - Related functions
    - CreatePlaylistNode() 
+      - Call malloc to allocate space for a PlaylistNode and return a pointer to the initialized object
    - InsertPlaylistNodeAfter() 
       - Insert a new node after node
    - SetNextPlaylistNode() 
@@ -129,6 +139,9 @@ Build the PlaylistNode class per the following specifications. Note: Some functi
    - GetNextPlaylistNode()
      - Return location pointed by nextNodePtr
    - PrintPlaylistNode()
+     - Display the contents of this PlaylistNode on stdout using printf
+   - DestroyPlaylistNode()
+     - Call free to release all memory dynamically allocated by malloc for the specified node
 
 Ex. of PrintPlaylistNode output:
 ```
@@ -281,13 +294,22 @@ OUTPUT TOTAL TIME OF PLAYLIST (IN SECONDS)
 Total time: 1461 seconds
 ```
 
+<br />
+10. Run valgrind to check for memory leaks or errors
+<br /><br />
+
+```
+valgrind --tool=memcheck --leak-check=yes --show-reachable=yes ./myprog
+```
+
 ### Implementation Guide
 1. Expand the folder named LabActivity and open PlaylistNode.c, PlaylistNode.h, main.c
 2. Enter the program code to create an application as described in the Problem Description.
-3. Test the program using to ensure it functions as expected.
-4. Commit the changes to your local repository with a message stating that LabActivity is completed.
-5. Push the changes from your local repository to the github classroom repository.
-6. Update the Coding Journal with an entry describing your experience using the steps outlined below.
+3. Test the program to ensure it functions as expected.
+4. Run the program with valgrind to catch any memory leaks or errors
+5. Commit the changes to your local repository with a message stating that LabActivity is completed.
+6. Push the changes from your local repository to the github classroom repository.
+7. Update the Coding Journal with an entry describing your experience using the steps outlined below.
 
 ## Coding Journal
 Keep a journal of your activities as you work on this lab. Many of the best engineers that I have worked with professionally have kept some sort of engineering journal. I personally packed notebooks around with me for nearly 8 years before I began keeping my notes electronically.   
