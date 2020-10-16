@@ -10,7 +10,7 @@ Please review the [CS253 Style Guide](https://docs.google.com/document/d/1zKIpNf
 - Code must compile without warnings using the provided Makefile
 - Programs must handle unexpected user input and either reprompt (loops) or gracefully exit with a non-zero exit status.
 - Programs must handle error conditions gracefully, without crashing, ideally by checking function returns codes (if available) and returning a non-zero exit status.
-- Programs should be free of memory related errors, buffer overflows, stack smashing, etc... Whether the program crashes or not.
+- Programs should be free of memory related errors, buffer overflows, stack smashing, leaks, etc... Whether the program crashes or not. This will be validated using valgrind.
 
 ## Lab Warmup - Contacts
 ### Problem Description
@@ -25,7 +25,7 @@ Please review the [CS253 Style Guide](https://docs.google.com/document/d/1zKIpNf
 - main.c - main() function
 
 <br /> 
-2. Build the ContactNode struct per the following specifications:
+2. The ContactNode struct as well as function declarations for the related functions described below have been provided in ContactNode.h.  Please do not modify the provided ContactNode.h file. Details regarding each function as well as expected return values are included in the comments associated with each function declaration in ContactNode.h.  The following is a summary of this content:
 
 - Data members
    - char contactName[50]
@@ -33,12 +33,16 @@ Please review the [CS253 Style Guide](https://docs.google.com/document/d/1zKIpNf
    - struct ContactNode* nextNodePtr
 - Related functions
    - ContactNode* CreateContactNode(char nameInit[], char phoneNumInit[]) 
+      - Call malloc to allocate space for a ContactNode and return a pointer to the initialized object
    - void InsertContactAfter(ContactNode* thisNode, ContactNode* newNode) 
       - Insert a new node after node
    - ContactNode* GetNextContact(ContactNode* thisNode) 
       - Return location pointed by nextNodePtr
    - void PrintContactNode(ContactNode* thisNode)
+      - Display the contents of this PlaylistNode on stdout using printf
    - void DestroyContactNode(ContactNode* thisNode)
+      - Call free to release all memory dynamically allocated by malloc for the specified node
+
 
 <br />  
 
@@ -121,7 +125,9 @@ valgrind --tool=memcheck --leak-check=yes --show-reachable=yes ./myprog
 - PlaylistNode.c - Related function definitions
 - main.c - main() function
 
-Build the PlaylistNode class per the following specifications. Note: Some functions can initially be function stubs (empty functions), to be completed in later steps. 
+The PlaylistNode struct as well as function declarations for the related functions described below have been provided in PlaylistNode.h.  Please do not modify the provided PlaylistNode.h file. Details regarding each function as well as expected return values are included in the comments associated with each function declaration in PlaylistNode.h.  The following is a summary of this content:  
+
+Note: Some functions can initially be function stubs (empty functions), to be completed in later steps. 
 
 - Private data members
    - char uniqueID[50] 
