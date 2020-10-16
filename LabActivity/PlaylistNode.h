@@ -16,7 +16,7 @@ struct PlaylistNode_struct {
    int songLength;
    struct PlaylistNode_struct* nextNodePtr;
 };
-typedef struct PlaylistNode_struct  PlaylistNode;
+typedef struct PlaylistNode_struct PlaylistNode;
 
 /* CreatePlaylistNode: Allocate a PlaylistNode in the heap using malloc
  *    the object will be initialized with the specified unique id, song name,
